@@ -24,13 +24,18 @@ const nftDetails = async (event) => {
     // call sdk to get nft details
     const result = await sdk.get_nft(requestParams);
 
+
+  try {
     const prices = await sdk.get_best_listing_on_nft_v2({
       collection_slug: result.data.nft.collection,
       identifier: result.data.nft.identifier,
     });
-
     // return response
     result.prices = prices;
+  } catch (err) {
+    // log error
+    console.log("Error: ", err);
+  }
     return presentation.ok(result);
   } catch (err) {
     // log error
