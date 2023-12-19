@@ -1,0 +1,20 @@
+functions:
+  nftApis:
+    name: nftApis-${opt:stage, 'dev'}
+    handler: nftApis/handler.nftApis
+    events:
+      - http:
+          path: nftApis/byContract
+          method: get
+          private: false
+          cors: true
+      - http:
+          path: nftApis/byWallet
+          method: get
+          private: false
+          cors: true
+      - http:
+          path: nftApis/nftDetails
+          method: get
+          private: false
+          cors: true

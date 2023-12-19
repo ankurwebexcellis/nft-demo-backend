@@ -1,0 +1,19 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.autoSave": "afterDelay",
+    "editor.wordWrap": "on",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "prettier.arrowParens": "always",
+    "prettier.trailingComma": "all",
+    "prettier.printWidth": 120,
+    "prettier.singleQuote": true,
+    "editor.tabSize": 2,
+    "cSpell.words": ["CHAINLINK"]
+  }
+}

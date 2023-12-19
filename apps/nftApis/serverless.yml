@@ -1,0 +1,45 @@
+service: nftApis
+
+provider:
+  name: aws
+  ecr:
+    images:
+      bggame:
+        path: ./
+        platform: linux/amd64
+  stage: ${opt:stage, 'dev'}
+  runtime: nodejs16.x
+  memorySize: 1024
+  timeout: 30
+  region: us-east-1
+  profile: webexcellis
+  apiGateway:
+    restApiId: ${file(../../serverless-config.yml):restApiId}
+    restApiRootResourceId: ${file(../../serverless-config.yml):restApiRootResourceId}
+  package:
+  include:
+    - ../../.env
+    - ../../validations/**
+    - ../../common/**
+
+custom:
+  filePrefix: ${file(../../serverless-config.yml):filePrefix}
+  warmup:
+    default:
+      enabled: true
+      events:
+        - schedule: rate(2 minutes)
+  prune:
+    automatic: true
+    includeLayers: true
+    number: 1
+  apiKeys:
+    - name: ${file(../../serverless-config.yml):apiKeys}
+
+plugins:
+  - serverless-plugin-warmup
+  - serverless-offline
+  - serverless-add-api-key
+  - serverless-prune-plugin
+
+functions: ${file(./serverless/functions${self:custom.filePrefix}.yml):functions}
