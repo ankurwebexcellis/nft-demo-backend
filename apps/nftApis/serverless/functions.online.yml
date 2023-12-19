@@ -1,7 +1,7 @@
 functions:
   nftApis:
     image:
-      name: nftApis
+      name: nftapis
       command:
         - nftApis/handler.nftApis
       entryPoint:

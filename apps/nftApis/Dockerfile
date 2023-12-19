@@ -9,6 +9,7 @@ COPY package.json ./
 COPY nftApis ./nftApis
 COPY validations ./validations
 COPY .env ./
+COPY common ./common
 
 
 

@@ -1,5 +1,6 @@
 const Joi = require('joi');
 
+// function to validate contract request
 function validateContractRequest(request) {
   const schema = Joi.object({
     address: Joi.string().required(),
@@ -9,6 +10,7 @@ function validateContractRequest(request) {
   return schema.validate(request);
 }
 
+// function to validate wallet request
 function validateWalletRequest(request) {
   const schema = Joi.object({
     address: Joi.string().required(),
@@ -18,6 +20,8 @@ function validateWalletRequest(request) {
   return schema.validate(request);
 }
 
+
+// function to validate detail request
 function validateDetailRequest(request) {
   const schema = Joi.object({
     address: Joi.string().required(),

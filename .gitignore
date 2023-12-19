@@ -1,6 +1,6 @@
 # Dependency directories
 node_modules/
 .env
-serverless-config
+serverless-config.yml
 .DS_Store
 .serverless

@@ -6,12 +6,20 @@ const { byContract } = require('./byContract');
 const { byWallet } = require('./byWallet');
 const { nftDetails } = require('./nftDetails');
 
+
+// Handler for lambda function
 module.exports.nftApis = async (event) => {
   try {
+    // check if request is warmup request
     if (await service.isWarmRequest(event)) return;
 
+    // set value
     let value = null;
+
+    // get route
     const route = event.httpMethod + '|' + event.resource;
+
+    // switch route
     switch (route) {
       case 'GET|/nftApis/byContract':
         value = await byContract(event);
@@ -25,6 +33,8 @@ module.exports.nftApis = async (event) => {
       default:
         throw new Error('Invalid route');
     }
+
+    // return value
     return value;
   } catch (err) {
     return presentation.error(err);

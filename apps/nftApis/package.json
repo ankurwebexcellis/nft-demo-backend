@@ -2,7 +2,7 @@
   "name": "assignment",
   "version": "1.0.0",
   "scripts": {
-    "start": "IS_OFFLINE=true sls bgGames:offline --stage dev"
+    "start": "IS_OFFLINE=true sls nftApis:offline --stage dev"
   },
   "author": "",
   "license": "ISC",
