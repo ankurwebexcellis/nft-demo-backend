@@ -4,3 +4,8 @@ node_modules/
 serverless-config.yml
 .DS_Store
 .serverless
+
+apps/*/validations
+apps/*/common
+apps/*/package-lock.json
+apps/*/package.json
