@@ -12,7 +12,7 @@ const byContract = async (event) => {
     const jsonBody = event.queryStringParameters ? event.queryStringParameters : {};
 
     // validate json body
-    if (!jsonBody.limit) jsonBody.limit = 50;
+    if (!jsonBody.limit) jsonBody.limit = 40;
     const { error } = validateContractRequest(jsonBody);
     if (error) return presentation.badRequest(error.details[0].message);
 

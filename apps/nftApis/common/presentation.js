@@ -5,7 +5,7 @@ const enums = require('./enums');
 const API_VERSION = '1.0.0';
 const headers = {
   'x-api-version': API_VERSION,
-  'Access-Control-Allow-Origin': process.env.ALLOWED_ORIGIN,
+  'Access-Control-Allow-Origin': "*",
   'Access-Control-Allow-Credentials': true,
 };
 
