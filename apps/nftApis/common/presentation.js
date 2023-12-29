@@ -1,12 +1,12 @@
-require('dotenv').config();
+require("dotenv").config();
 
-const enums = require('./enums');
+const enums = require("./enums");
 
-const API_VERSION = '1.0.0';
+const API_VERSION = "1.0.0";
 const headers = {
-  'x-api-version': API_VERSION,
-  'Access-Control-Allow-Origin': "*",
-  'Access-Control-Allow-Credentials': true,
+  "x-api-version": API_VERSION,
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Credentials": true,
 };
 
 // 200
@@ -44,7 +44,7 @@ module.exports.error = function (error) {
 module.exports.unAuthorized = function (message) {
   const lambdaProxyResponse = {
     statusCode: enums.HTTP_STATUS.UNAUTHORIZED,
-    body: JSON.stringify({ message: message || 'Unauthorized' }), // Matches response from AWS.
+    body: JSON.stringify({ message: message || "Unauthorized" }), // Matches response from AWS.
     headers: headers,
   };
   return lambdaProxyResponse;
@@ -54,7 +54,7 @@ module.exports.unAuthorized = function (message) {
 module.exports.paymentRequired = function (message) {
   const lambdaProxyResponse = {
     statusCode: enums.HTTP_STATUS.PAYMENT_REQUIRED,
-    body: JSON.stringify({ message: message || 'Payment required' }),
+    body: JSON.stringify({ message: message || "Payment required" }),
     headers: headers,
   };
   return lambdaProxyResponse;
@@ -64,7 +64,7 @@ module.exports.paymentRequired = function (message) {
 module.exports.forbidden = function (message) {
   const lambdaProxyResponse = {
     statusCode: enums.HTTP_STATUS.FORBIDDEN,
-    body: JSON.stringify({ message: message || 'Forbidden.' }),
+    body: JSON.stringify({ message: message || "Forbidden." }),
     headers: headers,
   };
   return lambdaProxyResponse;
@@ -74,7 +74,7 @@ module.exports.forbidden = function (message) {
 module.exports.conflict = function (message) {
   const lambdaProxyResponse = {
     statusCode: enums.HTTP_STATUS.CONFLICT,
-    body: JSON.stringify({ message: message || 'Conflict' }),
+    body: JSON.stringify({ message: message || "Conflict" }),
     headers: headers,
   };
   return lambdaProxyResponse;
@@ -84,7 +84,7 @@ module.exports.conflict = function (message) {
 module.exports.badRequest = function (message, data) {
   const lambdaProxyResponse = {
     statusCode: enums.HTTP_STATUS.BAD_REQUEST,
-    body: JSON.stringify({ message: message || 'Bad request', data }),
+    body: JSON.stringify({ message: message || "Bad request", data }),
     headers: headers,
   };
   return lambdaProxyResponse;
@@ -104,7 +104,7 @@ module.exports.ipBlocked = function (isAllowed, error) {
 module.exports.notFound = function (message) {
   const lambdaProxyResponse = {
     statusCode: enums.HTTP_STATUS.NOT_FOUND,
-    body: JSON.stringify({ message: message || 'Not found' }),
+    body: JSON.stringify({ message: message || "Not found" }),
     headers: headers,
   };
   return lambdaProxyResponse;
@@ -115,7 +115,7 @@ module.exports.serviceUnavailable = function () {
   const lambdaProxyResponse = {
     statusCode: enums.HTTP_STATUS.SERVICE_UNAVAILABLE,
     body: JSON.stringify({
-      message: 'currently undergoing maintenance and is not available. Check back soon.',
+      message: "currently undergoing maintenance and is not available. Check back soon.",
     }),
     headers: headers,
   };

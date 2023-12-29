@@ -12,7 +12,7 @@ const byWallet = async (event) => {
     const jsonBody = event.queryStringParameters ? event.queryStringParameters : {};
 
     // validate json body
-    if (!jsonBody.limit) jsonBody.limit = 40;
+    if (!jsonBody.limit) jsonBody.limit = 16;
     const { error } = validateWalletRequest(jsonBody);
     if (error) return presentation.badRequest(error.details[0].message);
 
@@ -21,7 +21,7 @@ const byWallet = async (event) => {
     sdk.auth(process.env.OPENSEA_API_KEY);
 
     // set request params
-    const requestParams = { chain: process.env.CHAIN, address: jsonBody.address };
+    const requestParams = { chain: process.env.CHAIN, address: jsonBody.address , limit: jsonBody.limit};
 
     // set optional params if exist
     if (jsonBody.next) requestParams.next = jsonBody.next;
